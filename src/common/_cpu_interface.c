@@ -26,7 +26,7 @@ void print_cpu_cache_topology_information(topology_t* cpu_object, topology_data_
 
 /* Call assignment to function pointer for vendor*/
 void _get_cpu_vendor_information(topology_t* cpu_object, topology_data_t* tdata_object) {
-    if (cpuidpresent()) {
+    if (cpuidispresent()) {
         cpu_vendor(cpu_object, tdata_object);
     }
 }
@@ -34,7 +34,7 @@ void _get_cpu_vendor_information(topology_t* cpu_object, topology_data_t* tdata_
 /* call assignment to function pointer for topology */
 void _get_cpu_cache_topology_information(topology_t* cpu_object, topology_data_t* tdata_object)
 {
-    if (cpuidpresent())
+    if (cpuidispresent())
     {
         int i;
 

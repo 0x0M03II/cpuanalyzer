@@ -1,7 +1,7 @@
 section .text
-    global cpuidpresent             ; Entry point for the Linker
+    global cpuidispresent             ; Entry point for the Linker
 
-cpuidpresent:                       ; Function start
+cpuidispresent:                       ; Function start
     pushfq                          ; Save RFLAGS to the stack
     pop     rax                     ; Load RFLAGS into RAX 
     mov     rbx, rax                ; Copy RAX to RBX 

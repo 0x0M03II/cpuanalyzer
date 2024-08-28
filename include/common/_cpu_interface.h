@@ -5,7 +5,7 @@
 #include "_cpu_multiarch.h"
 
 /* Ref. Assembly code in cpuidIsSupported.S */
-extern int cpuidpresent(void);
+extern int cpuidispresent(void);
 
 /* CPU Vendor Access Methods */
 void _get_cpu_vendor_information(topology_t* cpu_object, topology_data_t* tdata_object);
