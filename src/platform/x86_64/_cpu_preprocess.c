@@ -1,7 +1,7 @@
 #include "../../../include/platform/x86_64/_cpu_preprocess.h"
 
 // define function pointers
-const cpu_implementer_vend cpu_vender = &get_cpu_vendor;
+const cpu_implementer_vend cpu_vendor = &get_cpu_vendor;
 const cpu_implementer_top cpu_topology = &get_cpu_topology;
 
 /* cpuid utility function */
@@ -9,7 +9,7 @@ void cpuid(topology_t* top)
 {
     __asm__ volatile (
         "cpuid"
-        : "=a" (top->eax), "=b" (top->ebx), "=c" (top->ecx), "=d" (top->edx)
+        : "=a" (*top->eax), "=b" (*top->ebx), "=c" (*top->ecx), "=d" (*top->edx)
         : "a" (top->func), "c" (top->subfunc)
     );
 }

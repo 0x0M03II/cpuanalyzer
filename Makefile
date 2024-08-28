@@ -14,6 +14,7 @@ INCLUDE_DIRS = -Iinclude/common -Iinclude/platform/arm64 -Iinclude/platform/x86_
 # Source files
 COMMON_SRC = $(SRC_DIR)/common/_cpu_interface.c 
 PLATFORM_SRC_X86_64 = $(SRC_DIR)/platform/x86_64/_cpu_preprocess.c 
+MAIN_OBJ = $(OBJ_DIR)/main.o
 
 # Object files
 COMMON_OBJ = $(OBJ_DIR)/common/_cpu_interface.o 
@@ -41,17 +42,20 @@ check-paths:
 	@test -e "$(ASM_SRC)" || (echo "$(ASM_SRC) not found" && exit 1)
 	@echo "All required source files are present."
 
+$(MAIN_OBJ): main.c
+	$(CC) -c $< -o $@ -g $(INCLUDE_DIRS)
+
 $(ASM_OBJ): $(ASM_SRC) 
-	$(ASM) $< -o $@
+	$(ASM) $< -o $@ -g 
 
 $(OBJ_DIR)/common/%.o: $(SRC_DIR)/common/%.c
-	$(CC) -c $< -o $@ $(INCLUDE_DIRS)
+	$(CC) -c $< -o $@ $(INCLUDE_DIRS) -g
 
 $(OBJ_DIR)/platform/x86_64/%.o: $(SRC_DIR)/platform/x86_64/%.c
-	$(CC) -c $< -o $@ $(INCLUDE_DIRS)
+	$(CC) -c $< -o $@ $(INCLUDE_DIRS) -g
 
 $(BIN_DIR)/$(TARGET): $(COMMON_OBJ) $(PLATFORM_OBJ_X86_64) $(ASM_OBJ)
-	$(CC) main.c  $^  -o $@  # Link object files, not source files directly
+	$(CC) main.o  $^  -o $@  -g # Link object files, not source files directly
 
 clean:
 	rm -rf build/*

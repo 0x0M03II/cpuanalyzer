@@ -10,7 +10,8 @@ int main(void)
         perror("Failed to allocate memory for CPU topology object!\n");
         exit(EXIT_FAILURE);
     }
-
+    
+    printf("[Info] Calling interface CPU Functions!\n");
     print_cpu_vendor_information(cpu_object, topology_data);
     print_cpu_cache_topology_information(cpu_object, topology_data);
 
