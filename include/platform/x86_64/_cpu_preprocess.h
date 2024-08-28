@@ -7,7 +7,7 @@
 #include "../../common/_cpu_interface.h"
 
 /* cpuid utility function */
-static inline void cpuid(topology_t* top);
+void cpuid(topology_t* top);
 
 // /* cpuid utility overload */
 // static inline void cpuidimport(
@@ -20,9 +20,9 @@ static inline void cpuid(topology_t* top);
 // );
 
 /* CPU Ventor utility function */
-static inline void get_cpu_vendor(topology_t* cpu_object, topology_data_t* tdata);
+void get_cpu_vendor(topology_t* cpu_object, topology_data_t* tdata);
 
 /* CPU Topology utility function */
-static inline void get_cpu_topology(topology_t* cpu_object, topology_data_t* tdata);
+void get_cpu_topology(topology_t* cpu_object, topology_data_t* tdata);
 
 #endif // CPU_PREPROCESS

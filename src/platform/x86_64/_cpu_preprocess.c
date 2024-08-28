@@ -1,7 +1,7 @@
-#include "../../../../include/platform/x86_64/_cpu_preprocess.h"
+#include "../../../include/platform/x86_64/_cpu_preprocess.h"
 
 /* cpuid utility function */
-static inline void cpuid(topology_t* top)
+void cpuid(topology_t* top)
 {
     __asm__ volatile (
         "cpuid"
@@ -11,24 +11,24 @@ static inline void cpuid(topology_t* top)
 }
 
 /* cpuid utility function */
-static inline void cpuidimport(
-    uint32_t func,
-    uint32_t subfunc,
-    uint32_t* eax,
-    uint32_t* ebx,
-    uint32_t* ecx,
-    uint32_t* edx
-)
-{
-    __asm__ volatile (
-        "cpuid"
-        : "=a" (*eax), "=b" (*ebx), "=c" (*ecx), "=d" (*edx)
-        : "a" (func), "c" (subfunc)
-    );
-}
+// static inline void cpuidimport(
+//     uint32_t func,
+//     uint32_t subfunc,
+//     uint32_t* eax,
+//     uint32_t* ebx,
+//     uint32_t* ecx,
+//     uint32_t* edx
+// )
+// {
+//     __asm__ volatile (
+//         "cpuid"
+//         : "=a" (*eax), "=b" (*ebx), "=c" (*ecx), "=d" (*edx)
+//         : "a" (func), "c" (subfunc)
+//     );
+// }
 
 /* Helper function for cpuid call */
-static inline cpuidHelper(topology_t* cpu_object, uint32_t cpuidfunction)
+static inline void cpuidHelper(topology_t* cpu_object, uint32_t cpuidfunction)
 {
     if(cpu_object == NULL) 
     {
@@ -43,7 +43,7 @@ static inline cpuidHelper(topology_t* cpu_object, uint32_t cpuidfunction)
 }
 
 /* CPU Ventor utility function */
-static inline void get_cpu_vendor(topology_t* cpu_object, topology_data_t* tdata)
+void get_cpu_vendor(topology_t* cpu_object, topology_data_t* tdata)
 {
     cpuidHelper(cpu_object, CPUID_BASE_DEFINITION);
 
@@ -55,7 +55,7 @@ static inline void get_cpu_vendor(topology_t* cpu_object, topology_data_t* tdata
 }
 
 
-static inline void get_cpu_topology(topology_t* cpu_object, topology_data_t* tdata)
+void get_cpu_topology(topology_t* cpu_object, topology_data_t* tdata)
 {
 
     int i;
