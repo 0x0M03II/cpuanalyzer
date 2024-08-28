@@ -11,7 +11,7 @@ LIBDIR = build/lib
 INCLUDEDIR = include
 
 # Define source files and object files
-SRCS = $(wildcard $(SRCDIR)/**/*.c) $(wildcard $(SRCDIR)/platform/**/*.c)
+SRCS = $(wildcard $(SRCDIR)/common/**/*.c) $(wildcard $(SRCDIR)/platform/**/*.c)
 OBJS = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
 # Define the target executable
