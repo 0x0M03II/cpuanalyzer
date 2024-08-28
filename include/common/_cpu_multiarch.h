@@ -16,14 +16,14 @@
     // #else
 
     // #endif
-
+    
     // function pointer to implement
     typedef void (* cpu_implementer_top)(topology_t* cpu_object, topology_data_t* tdata);
     typedef void (* cpu_implementer_vend)(topology_t* cpu_object, topology_data_t* tdata);
 
     // function pointer assignments
-    static const cpu_implementer_vend cpu_vendor = &get_cpu_vendor;
-    static const cpu_implementer_top cpu_topology = &get_cpu_topology;
+    extern const cpu_implementer_vend cpu_vendor;
+    extern const cpu_implementer_top cpu_topology;
 
 #endif
 

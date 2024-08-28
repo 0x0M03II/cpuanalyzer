@@ -37,8 +37,8 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.S
 
 # Clean up build artifacts
 clean:
-	del /q $(OBJDIR)\*.o
-	del /q $(BINDIR)\$(EXE)
+	rm -f $(OBJDIR)/**/*/*.o
+	rm -f $(BINDIR)\$(EXE)
 
 # Phony targets
 .PHONY: all clean
