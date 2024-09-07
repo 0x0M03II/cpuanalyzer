@@ -72,7 +72,7 @@ void get_cpu_topology(topology_t* cpu_object, topology_data_t* tdata)
     cpuid(cpu_object);
 
     // Some values must be incrememented.  See Docs for specification
-    *tdata->cache_type = *cpu_object->eax & 0x1F;
+    *tdata->cache_type = *cpu_object->eax & 0x1F; 
     *tdata->cache_level = (*cpu_object->eax >> 5) & 0x3;
     *tdata->fully_associative = (*cpu_object->eax >> 9) & 0x01;
     *tdata->cache_line_size = (*cpu_object->ebx & 0x4FF) + 1;
